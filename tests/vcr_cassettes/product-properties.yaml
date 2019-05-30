@@ -1,0 +1,38 @@
+interactions:
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://api-extern.systembolaget.se/product/v1/product/508314
+  response:
+    body:
+      string: "{\"ProductId\":\"508314\",\"ProductNumber\":\"144612\",\"ProductNameBold\":\"Kung\",\"ProductNameThin\":null,\"Category\":\"\xD6l\",\"ProductNumberShort\":\"1446\",\"ProducerName\":\"\xC5bro
+        Bryggeri\",\"SupplierName\":\"\xC5bro Bryggeri\",\"IsKosher\":false,\"BottleTextShort\":\"Burk\",\"Seal\":null,\"RestrictedParcelQuantity\":0,\"IsOrganic\":false,\"IsEthical\":false,\"EthicalLabel\":null,\"IsWebLaunch\":false,\"SellStartDate\":\"2011-10-28T00:00:00\",\"IsCompletelyOutOfStock\":false,\"IsTemporaryOutOfStock\":false,\"AlcoholPercentage\":5.20,\"Volume\":500.00,\"Price\":10.90,\"Country\":\"Sverige\",\"OriginLevel1\":\"Kalmar
+        l\xE4n\",\"OriginLevel2\":\"Vimmerby kommun\",\"Vintage\":0,\"SubCategory\":\"\xD6l\",\"Type\":\"Ljus
+        lager\",\"Style\":\"Internationell stil\",\"AssortmentText\":\"Ordinarie sortiment\",\"BeverageDescriptionShort\":\"\xD6l,
+        Ljus lager, Internationell stil\",\"Usage\":\"Serveras vid 8-10\xB0C till
+        l\xE4ttare husmanskost.\",\"Taste\":\"Br\xF6dig smak med inslag av \xF6rter
+        och citrus.\",\"Assortment\":\"FS\",\"RecycleFee\":1.00,\"IsManufacturingCountry\":true,\"IsRegionalRestricted\":false,\"IsInStoreSearchAssortment\":null,\"IsNews\":false}"
+    headers:
+      Cache-Control:
+      - max-age=20005
+      Content-Length:
+      - '1043'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 30 May 2019 16:22:33 GMT
+      ETag:
+      - '"86b96e87-52da-4a9d-95c7-e1879cd94dd4"'
+      Last-Modified:
+      - Thu, 30 May 2019 14:27:39 GMT
+      Request-Context:
+      - appId=cid-v1:deb9f14e-19ee-4f55-9b15-bea899e74e8a
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1

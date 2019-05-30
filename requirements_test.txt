@@ -1,0 +1,5 @@
+flake8-docstrings
+flake8
+pydocstyle
+pytest
+vcrpy
