@@ -20,13 +20,23 @@ def product_properties():
             'IsRegionalRestricted', 'IsInStoreSearchAssortment', 'IsNews']
 
 
-@vcr.use_cassette('tests/vcr_cassettes/product-properties.yaml',
+@vcr.use_cassette('tests/vcr_cassettes/product-get.yaml',
                   filter_headers=['Ocp-Apim-Subscription-Key'])
-def test_product_properties(product_properties):
-    """Test product properties."""
-    product = pysystembolaget.Product(508314)
-    response = product.properties()
+def test_product_get(product_properties):
+    """Test product get."""
+    response = pysystembolaget.Product.get(508314)
 
     assert isinstance(response, dict)
     assert response['ProductId'] == '508314'
     assert set(product_properties).issubset(response.keys())
+
+
+@vcr.use_cassette('tests/vcr_cassettes/product-get-all-products.yaml',
+                  filter_headers=['Ocp-Apim-Subscription-Key'])
+def test_product_get_all_prodcuts(product_properties):
+    """Test product get all products."""
+    response = pysystembolaget.Product.get_all_products()
+
+    assert isinstance(response, list)
+    assert isinstance(response[0], dict)
+    assert set(product_properties).issubset(response[0].keys())

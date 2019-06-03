@@ -12,8 +12,7 @@ import pysystembolaget
 import pprint
 
 pysystembolaget.set_ocp_apim_subscription_key(key)
-product = pysystembolaget.Product(508314)
-response = product.properties()
+response = pysystembolaget.Product.get(508314)
 
 pprint.pprint(response)
 ```
