@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='pysystembolaget',
-    version='0.2.0',
+    version='0.3.0',
     author='Claes Hallstrom',
     author_email='hallstrom.claes@gmail.com',
     description='Wrapper for Systembolaget API',
