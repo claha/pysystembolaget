@@ -16,3 +16,8 @@ response = pysystembolaget.Product.get(508314)
 
 pprint.pprint(response)
 ```
+
+## Create TAGS
+```
+find ./pysystembolaget -type f -name '*.py' | xargs etags
+```
