@@ -2,8 +2,6 @@
 import pytest
 import vcr
 
-import pysystembolaget
-
 
 @pytest.fixture
 def product_properties():
@@ -20,38 +18,42 @@ def product_properties():
             'IsRegionalRestricted', 'IsInStoreSearchAssortment', 'IsNews']
 
 
-@vcr.use_cassette('tests/vcr_cassettes/product-get.yaml',
-                  filter_headers=['Ocp-Apim-Subscription-Key'])
-def test_product_get(product_properties):
-    """Test product get."""
-    response = pysystembolaget.Product.get(508314)
+class TestProductAPI():
+    """Test Product API."""
 
-    assert isinstance(response, dict)
-    assert response['ProductId'] == '508314'
-    assert set(product_properties).issubset(response.keys())
+    @vcr.use_cassette(
+        'tests/vcr_cassettes/product-get.yaml',
+        filter_headers=['Ocp-Apim-Subscription-Key'])
+    def test_product_get(self, product_properties):
+        """Test product get."""
+        response = self.api.get(508314)
 
+        assert isinstance(response, dict)
+        assert response['ProductId'] == '508314'
+        assert set(product_properties).issubset(response.keys())
 
-@vcr.use_cassette('tests/vcr_cassettes/product-get-all-products.yaml',
-                  filter_headers=['Ocp-Apim-Subscription-Key'])
-def test_product_get_all_prodcuts(product_properties):
-    """Test product get all products."""
-    response = pysystembolaget.Product.get_all_products()
+    @vcr.use_cassette(
+        'tests/vcr_cassettes/product-get-all-products.yaml',
+        filter_headers=['Ocp-Apim-Subscription-Key'])
+    def test_product_get_all_prodcuts(self, product_properties):
+        """Test product get all products."""
+        response = self.api.get_all_products()
 
-    assert isinstance(response, list)
-    assert isinstance(response[0], dict)
-    assert set(product_properties).issubset(response[0].keys())
+        assert isinstance(response, list)
+        assert isinstance(response[0], dict)
+        assert set(product_properties).issubset(response[0].keys())
 
+    @vcr.use_cassette(
+        'tests/vcr_cassettes/product-get-products-with-store.yaml',
+        filter_headers=['Ocp-Apim-Subscription-Key'])
+    def test_product_get_products_with_store(self):
+        """Test product get products with store."""
+        response = self.api.get_products_with_store()
 
-@vcr.use_cassette('tests/vcr_cassettes/product-get-products-with-store.yaml',
-                  filter_headers=['Ocp-Apim-Subscription-Key'])
-def test_product_get_products_with_store():
-    """Test product get products with store."""
-    response = pysystembolaget.Product.get_products_with_store()
-
-    assert isinstance(response, list)
-    assert isinstance(response[0], dict)
-    assert set(['SiteId', 'Products']).issubset(response[0].keys())
-    products = response[0]['Products']
-    assert isinstance(products, list)
-    assert isinstance(products[0], dict)
-    assert set(['ProductId', 'ProductNumber']).issubset(products[0].keys())
+        assert isinstance(response, list)
+        assert isinstance(response[0], dict)
+        assert set(['SiteId', 'Products']).issubset(response[0].keys())
+        products = response[0]['Products']
+        assert isinstance(products, list)
+        assert isinstance(products[0], dict)
+        assert set(['ProductId', 'ProductNumber']).issubset(products[0].keys())

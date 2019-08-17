@@ -19,8 +19,8 @@ coverage report
 import pysystembolaget
 import pprint
 
-pysystembolaget.set_ocp_apim_subscription_key(key)
-response = pysystembolaget.Product.get(508314)
+api = pysystembolaget.ProductAPI(api_key)
+response = api.get(508314)
 
 pprint.pprint(response)
 ```

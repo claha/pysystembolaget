@@ -1,9 +1,11 @@
 
-pysystembolaget/product.py,113
-class Product(5,57
-    def get(11,189
-    def get_all_products(18,368
-    def get_products_with_store(25,543
+pysystembolaget/productapi.py,142
+class ProductAPI(7,103
+    def __init__(10,147
+    def get(16,352
+    def get_all_products(22,524
+    def get_products_with_store(28,692
 
-pysystembolaget/__init__.py,41
-def set_ocp_apim_subscription_key(8,106
+pysystembolaget/__init__.py,0
+
+pysystembolaget/const.py,0
