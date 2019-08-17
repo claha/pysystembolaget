@@ -6,6 +6,14 @@ Python wrapper for Systembolaget API. An API key is needed to use this library, 
 python3 setup.py install
 ```
 
+## Coverage
+```
+coverage erase
+coverage run -m pytest
+coverage xml
+coverage report
+```
+
 ## Example
 ```
 import pysystembolaget
