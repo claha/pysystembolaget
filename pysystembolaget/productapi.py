@@ -1,7 +1,8 @@
 """Systembolaget Product API."""
-from .const import API_PRODUCT_URL, API_KEY_HEADER
+import http.client
+import json
 
-import requests
+from .const import API_HOST, API_KEY_HEADER, API_PRODUCT_URL
 
 
 class ProductAPI():
@@ -9,24 +10,35 @@ class ProductAPI():
 
     def __init__(self, api_key):
         """Initialize ProductAPI."""
-        self._session = requests.Session()
-        self._session.headers = {}
-        self._session.headers[API_KEY_HEADER] = api_key
+        self._headers = {
+            API_KEY_HEADER: api_key
+        }
+
+    def __GET__(self, url):
+        """Get request towards prudct api."""
+        conn = http.client.HTTPSConnection(API_HOST)
+        method = 'GET'
+        conn.request(method,
+                     url,
+                     body="{body}",
+                     headers=self._headers)
+        response = conn.getresponse()
+        data = response.read()
+        conn.close()
+
+        return json.loads(data)
 
     def get(self, product_id):
         """Get."""
         url = API_PRODUCT_URL + str(product_id)
-        response = self._session.get(url)
-        return response.json()
+        return self.__GET__(url)
 
     def get_all_products(self):
         """Get all products."""
         url = API_PRODUCT_URL
-        response = self._session.get(url)
-        return response.json()
+        return self.__GET__(url)
 
     def get_products_with_store(self):
         """Get products with store."""
         url = API_PRODUCT_URL + 'getproductswithstore'
-        response = self._session.get(url)
-        return response.json()
+        return self.__GET__(url)
