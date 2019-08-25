@@ -1,11 +1,11 @@
 
-pysystembolaget/productapi.py,166
-class ProductAPI(8,128
-    def __init__(11,172
-    def __GET__(17,315
-    def get(31,724
-    def get_all_products(36,856
-    def get_products_with_store(41,984
+pysystembolaget/systembolaget.py,194
+class Systembolaget(8,116
+    def __init__(11,165
+    def __GET__(17,308
+    def product_get(31,724
+    def product_get_all_products(36,877
+    def product_get_products_with_store(41,1024
 
 pysystembolaget/__init__.py,0
 

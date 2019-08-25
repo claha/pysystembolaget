@@ -1,4 +1,4 @@
-"""Test Systembolaget Product API."""
+"""Test Systembolaget Product."""
 import pytest
 import vcr
 
@@ -18,15 +18,15 @@ def product_properties():
             'IsRegionalRestricted', 'IsInStoreSearchAssortment', 'IsNews']
 
 
-class TestProductAPI():
-    """Test Product API."""
+class TestSystembolagetProduct():
+    """Test Systembolaget Product."""
 
     @vcr.use_cassette(
         'tests/vcr_cassettes/product-get.yaml',
         filter_headers=['Ocp-Apim-Subscription-Key'])
     def test_product_get(self, product_properties):
         """Test product get."""
-        response = self.api.get(508314)
+        response = self.systembolaget.product_get(508314)
 
         assert isinstance(response, dict)
         assert response['ProductId'] == '508314'
@@ -37,7 +37,7 @@ class TestProductAPI():
         filter_headers=['Ocp-Apim-Subscription-Key'])
     def test_product_get_all_prodcuts(self, product_properties):
         """Test product get all products."""
-        response = self.api.get_all_products()
+        response = self.systembolaget.product_get_all_products()
 
         assert isinstance(response, list)
         assert isinstance(response[0], dict)
@@ -48,7 +48,7 @@ class TestProductAPI():
         filter_headers=['Ocp-Apim-Subscription-Key'])
     def test_product_get_products_with_store(self):
         """Test product get products with store."""
-        response = self.api.get_products_with_store()
+        response = self.systembolaget.product_get_products_with_store()
 
         assert isinstance(response, list)
         assert isinstance(response[0], dict)

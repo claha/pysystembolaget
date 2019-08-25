@@ -15,4 +15,4 @@ def pytest_addoption(parser):
 def class_fixture(request):
     """Run before each test class."""
     api_key = request.config.getoption('--api_key')
-    request.cls.api = pysystembolaget.ProductAPI(api_key)
+    request.cls.systembolaget = pysystembolaget.Systembolaget(api_key)

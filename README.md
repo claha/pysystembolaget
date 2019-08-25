@@ -6,23 +6,25 @@ Python wrapper for Systembolaget API. An API key is needed to use this library, 
 python3 setup.py install
 ```
 
+## Example
+```
+import pysystembolaget
+import pprint
+
+api_key = 'YOUR API KEY'
+
+systembolaget = pysystembolaget.Systembolaget(api_key)
+response = systembolaget.product_get(508314)
+
+pprint.pprint(response)
+```
+
 ## Coverage
 ```
 coverage erase
 coverage run -m pytest
 coverage xml
 coverage report
-```
-
-## Example
-```
-import pysystembolaget
-import pprint
-
-api = pysystembolaget.ProductAPI(api_key)
-response = api.get(508314)
-
-pprint.pprint(response)
 ```
 
 ## Create TAGS
