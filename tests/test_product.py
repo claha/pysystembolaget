@@ -57,3 +57,18 @@ class TestSystembolagetProduct():
         assert isinstance(products, list)
         assert isinstance(products[0], dict)
         assert set(['ProductId', 'ProductNumber']).issubset(products[0].keys())
+
+    @vcr.use_cassette(
+        'tests/vcr_cassettes/product-search.yaml',
+        filter_headers=['Ocp-Apim-Subscription-Key'])
+    def test_product_search(self, product_properties):
+        """Test product search."""
+        response = self.systembolaget.product_search()
+
+        assert isinstance(response, dict)
+        assert isinstance(response['Hits'], list)
+        assert isinstance(response['Metadata'], dict)
+        assert set(['DocCount', 'NextPage', 'PriceRange']).issubset(
+            response['Metadata'].keys())
+        assert isinstance(response['Hits'][0], dict)
+        assert set(product_properties).issubset(response['Hits'][0].keys())
